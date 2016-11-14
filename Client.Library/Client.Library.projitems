@@ -18,6 +18,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\Experiments.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\ExperimentsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\ExperimentsServiceFake.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\IExperiementsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
