@@ -7,7 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    </Grid>
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Margin" Value="10,10,10,0"/>
+        </Style>
+    </Page.Resources>
+    
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button Click="OnTemplate10">Template10</Button>
+        <Button Click="OnUWPCommunityToolkit">UWP Community Toolkit</Button>
+    </StackPanel>
 </Page>
