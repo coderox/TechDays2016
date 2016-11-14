@@ -55,7 +55,7 @@ namespace Client.Views
             var random = new Random();
             for (int i = 0; i < 1000; i++) {
                 await ReloadControls();
-                await Task.Delay(25);
+                await Task.Delay(5);
                 if (random.NextDouble() < 0.25) {
                     OnPurchase(null, null);
                 }
