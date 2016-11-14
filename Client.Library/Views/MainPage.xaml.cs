@@ -13,18 +13,52 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace Client.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private void SecondPage(object sender, RoutedEventArgs e)
+        {
+            // folders
+            Frame.Navigate(typeof(SecondPage));
+        }
+
+        private void ThirdPage(object sender, RoutedEventArgs e)
+        {
+            // pages
+            Frame.Navigate(typeof(ThirdPage));
+        }
+
+        private void FourthPage(object sender, RoutedEventArgs e)
+        {
+            // viewstate
+            Frame.Navigate(typeof(FourthPage));
+        }
+
+        private void FifthPage(object sender, RoutedEventArgs e)
+        {
+            // device family triggers
+            Frame.Navigate(typeof(FifthPage));
+        }
+
+        private void SixthPage(object sender, RoutedEventArgs e)
+        {
+            // explicit
+            switch (Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily) {
+                case "Windows.Mobile":
+                    Frame.Navigate(typeof(SixthPage_Mobile));
+                    break;
+                case "Windows.Desktop":
+                    Frame.Navigate(typeof(SixthPage));
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

@@ -7,7 +7,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="10,10,10,0"/>
+        </Style>
+    </Page.Resources>
 
-    </Grid>
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Button Click="SecondPage" Content="folders"/>
+        <Button Click="ThirdPage" Content="pages"/>
+        <Button Click="FourthPage" Content="viewstate"/>
+        <Button Click="FifthPage" Content="device family triggers"/>
+        <Button Click="SixthPage" Content="code and ux"/>
+
+    </StackPanel>
+
 </Page>
