@@ -1,0 +1,6 @@
+[submodule "Template10"]
+	path = Template10
+	url = git@github.com:Windows-XAML/Template10.git
+[submodule "UWPCommunityToolkit"]
+	path = UWPCommunityToolkit
+	url = git@github.com:Microsoft/UWPCommunityToolkit.git
