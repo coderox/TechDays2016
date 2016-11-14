@@ -5,10 +5,16 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Client.Library", "Client.Library\Client.Library.shproj", "{EC2CE947-F69E-41E7-B4B3-C31A49A48A5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.UWP", "Client.UWP\Client.UWP.csproj", "{2399F8B2-9AA2-4977-A787-9CD287829C39}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Develop", "Develop\Develop.csproj", "{2399F8B2-9AA2-4977-A787-9CD287829C31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Production", "Production\Production.csproj", "{2399F8B2-9AA2-4977-A787-9CD287829C32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{2399F8B2-9AA2-4977-A787-9CD287829C39}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Client.Library\Client.Library.projitems*{2399f8b2-9aa2-4977-a787-9cd287829c31}*SharedItemsImports = 4
+		Client.Library\Client.Library.projitems*{2399f8b2-9aa2-4977-a787-9cd287829c32}*SharedItemsImports = 4
 		Client.Library\Client.Library.projitems*{2399f8b2-9aa2-4977-a787-9cd287829c39}*SharedItemsImports = 4
 		Client.Library\Client.Library.projitems*{ec2ce947-f69e-41e7-b4b3-c31a49a48a5c}*SharedItemsImports = 13
 	EndGlobalSection
@@ -21,6 +27,42 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Debug|ARM.ActiveCfg = Debug|ARM
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Debug|ARM.Build.0 = Debug|ARM
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Debug|ARM.Deploy.0 = Debug|ARM
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Debug|x64.ActiveCfg = Debug|x64
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Debug|x64.Build.0 = Debug|x64
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Debug|x64.Deploy.0 = Debug|x64
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Debug|x86.ActiveCfg = Debug|x86
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Debug|x86.Build.0 = Debug|x86
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Debug|x86.Deploy.0 = Debug|x86
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Release|ARM.ActiveCfg = Release|ARM
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Release|ARM.Build.0 = Release|ARM
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Release|ARM.Deploy.0 = Release|ARM
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Release|x64.ActiveCfg = Release|x64
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Release|x64.Build.0 = Release|x64
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Release|x64.Deploy.0 = Release|x64
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Release|x86.ActiveCfg = Release|x86
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Release|x86.Build.0 = Release|x86
+		{2399F8B2-9AA2-4977-A787-9CD287829C31}.Release|x86.Deploy.0 = Release|x86
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Debug|ARM.ActiveCfg = Debug|ARM
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Debug|ARM.Build.0 = Debug|ARM
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Debug|ARM.Deploy.0 = Debug|ARM
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Debug|x64.ActiveCfg = Debug|x64
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Debug|x64.Build.0 = Debug|x64
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Debug|x64.Deploy.0 = Debug|x64
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Debug|x86.ActiveCfg = Debug|x86
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Debug|x86.Build.0 = Debug|x86
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Debug|x86.Deploy.0 = Debug|x86
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Release|ARM.ActiveCfg = Release|ARM
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Release|ARM.Build.0 = Release|ARM
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Release|ARM.Deploy.0 = Release|ARM
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Release|x64.ActiveCfg = Release|x64
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Release|x64.Build.0 = Release|x64
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Release|x64.Deploy.0 = Release|x64
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Release|x86.ActiveCfg = Release|x86
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Release|x86.Build.0 = Release|x86
+		{2399F8B2-9AA2-4977-A787-9CD287829C32}.Release|x86.Deploy.0 = Release|x86
 		{2399F8B2-9AA2-4977-A787-9CD287829C39}.Debug|ARM.ActiveCfg = Debug|ARM
 		{2399F8B2-9AA2-4977-A787-9CD287829C39}.Debug|ARM.Build.0 = Debug|ARM
 		{2399F8B2-9AA2-4977-A787-9CD287829C39}.Debug|ARM.Deploy.0 = Debug|ARM
