@@ -50,9 +50,18 @@ namespace Client.Views
             Debug.WriteLine(ExperimentsServiceFake.ReportResults());
         }
 
-        private async void OnReloadClicked(object sender, RoutedEventArgs e)
+        private async void OnRun(object sender, RoutedEventArgs e)
         {
-            await ReloadControls();
+            var random = new Random();
+            for (int i = 0; i < 1000; i++) {
+                await ReloadControls();
+                await Task.Delay(100);
+                if (random.NextDouble() < 0.25) {
+                    OnPurchase(null, null);
+                }
+            }
+
+            OnReport(null, null);
         }
 
         private async Task ReloadControls()

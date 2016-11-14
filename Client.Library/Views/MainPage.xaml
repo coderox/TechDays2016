@@ -21,6 +21,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -28,8 +29,9 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="btnPurchase" Grid.ColumnSpan="2" Content="purchase" Click="OnPurchase"/>
+        <Button x:Name="btnPurchase" Grid.ColumnSpan="3" Content="purchase" Click="OnPurchase"/>
         <Button Grid.Row="1" Content="reload" Click="OnReload"/>
-        <Button Grid.Row="1" Grid.Column="1" Content="report" Click="OnReport"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="run" Click="OnRun"/>
+        <Button Grid.Row="1" Grid.Column="2" Content="report" Click="OnReport"/>
     </Grid>
 </Page>
