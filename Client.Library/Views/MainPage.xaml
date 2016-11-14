@@ -9,5 +9,27 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                <Setter Property="FontSize" Value="30"/>
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+        </Grid.Resources>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="btnPurchase" Grid.ColumnSpan="2" Content="purchase" Click="OnPurchase"/>
+        <Button Grid.Row="1" Content="reload" Click="OnReload"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="report" Click="OnReport"/>
     </Grid>
 </Page>

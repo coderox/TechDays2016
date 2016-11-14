@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Client.Utilities;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -13,18 +17,51 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace Client.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
+        IExperimentsService experiments = new ExperimentsService();
+        Color testColor;
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            Loaded += async delegate {
+                await ExperimentsServiceFake.Initialize();
+                await experiments.Initialize();
+                await ReloadControls();
+            };
+        }
+
+        private void OnPurchase(object sender, RoutedEventArgs e)
+        {
+            experiments.LogConversion<Color>(Experiments.PURCHASE_BUTTON_BACKGROUND_COLOR, testColor);
+        }
+
+        private async void OnReload(object sender, RoutedEventArgs e)
+        {
+            await ReloadControls();
+        }
+
+        private void OnReport(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine(ExperimentsServiceFake.ReportResults());
+        }
+
+        private async void OnReloadClicked(object sender, RoutedEventArgs e)
+        {
+            await ReloadControls();
+        }
+
+        private async Task ReloadControls()
+        {
+            await experiments.Initialize();
+
+            testColor = experiments.Get<Color>(Experiments.PURCHASE_BUTTON_BACKGROUND_COLOR, Colors.Gray);
+            btnPurchase.Background = new SolidColorBrush(testColor);
+            experiments.LogView<Color>(Experiments.PURCHASE_BUTTON_BACKGROUND_COLOR, testColor);
         }
     }
 }
