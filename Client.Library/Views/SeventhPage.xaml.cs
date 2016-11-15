@@ -64,29 +64,8 @@ namespace Client.Views
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            var width = e.NewSize.Width;
-            var height = e.NewSize.Height - appBar.ActualHeight;
-
-            double iWidth = 0;
-            double itemHeight = 0;
-            if (maximumRowsOrColumns == 1) { // small
-                iWidth = width;
-                itemHeight = Math.Floor(height / 3);
-            } else if (maximumRowsOrColumns == 2) { // medium
-                iWidth = width / maximumRowsOrColumns;
-                itemHeight = Math.Floor(height / 2);
-            } else { // large
-                iWidth = width / maximumRowsOrColumns;
-                itemHeight = height;
-                if (iWidth > 450) {
-                    iWidth = width / 4;
-                    MaximumRowsOrColumns = 4;
-                }
-            }
-
-            ColumnSpan = maximumRowsOrColumns % 2 == 0 ? 2 : 1;
-            ItemWidth = Math.Floor(iWidth);
+        {       
+            ItemWidth = Math.Floor(e.NewSize.Width / maximumRowsOrColumns);
         }
     }
 
@@ -96,9 +75,9 @@ namespace Client.Views
         {
             try {
                 var localItem = item as FrameworkElement;
-                if(localItem != null && localItem.Tag.ToString() == "Wide")
-                //element.SetValue(Windows.UI.Xaml.Controls.VariableSizedWrapGrid.RowSpanProperty, localItem.RowSpan);
-                element.SetValue(Windows.UI.Xaml.Controls.VariableSizedWrapGrid.ColumnSpanProperty, 2);
+                if (localItem != null && localItem.Tag.ToString() == "Wide")
+                    //element.SetValue(Windows.UI.Xaml.Controls.VariableSizedWrapGrid.RowSpanProperty, localItem.RowSpan);
+                    element.SetValue(Windows.UI.Xaml.Controls.VariableSizedWrapGrid.ColumnSpanProperty, 2);
             } catch {
                 //element.SetValue(Windows.UI.Xaml.Controls.VariableSizedWrapGrid.RowSpanProperty, 1);
                 element.SetValue(Windows.UI.Xaml.Controls.VariableSizedWrapGrid.ColumnSpanProperty, 1);
