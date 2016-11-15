@@ -22,7 +22,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="tbStatus.Text" Value="small"/>
-                        <Setter Target="gridLayout.Margin" Value="12,0"/>
+                        <Setter Target="gridView.Margin" Value="12,0,2,0"/>
                         <Setter Target="gridItems.MaximumRowsOrColumns" Value="1"/>
                         <Setter Target="appBar.(Grid.Row)" Value="2"/>
                     </VisualState.Setters>
@@ -34,7 +34,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="tbStatus.Text" Value="medium"/>
-                        <Setter Target="gridLayout.Margin" Value="24,0,24,0"/>
+                        <Setter Target="gridView.Margin" Value="24,0,14,0"/>
                         <Setter Target="gridItems.MaximumRowsOrColumns" Value="2"/>
                         <Setter Target="appBar.(Grid.Row)" Value="0"/>
                     </VisualState.Setters>
@@ -46,7 +46,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="tbStatus.Text" Value="large"/>
-                        <Setter Target="gridLayout.Margin" Value="24,0,24,0"/>
+                        <Setter Target="gridView.Margin" Value="24,0,14,0"/>
                         <Setter Target="gridItems.MaximumRowsOrColumns" Value="3"/>
                         <Setter Target="appBar.(Grid.Row)" Value="0"/>
                     </VisualState.Setters>
@@ -55,29 +55,32 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <Grid Grid.Row="1" x:Name="gridLayout" Background="CornflowerBlue" Margin="12,0">
-            <GridView>
-                <GridView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VariableSizedWrapGrid x:Name="gridItems" Orientation="Horizontal" MaximumRowsOrColumns="1" ItemHeight="400" ItemWidth="{Binding ItemWidth, Mode=OneWay, FallbackValue=200}"/>
-                    </ItemsPanelTemplate>
-                </GridView.ItemsPanel>
-                <GridView.ItemContainerStyle>
-                    <Style TargetType="GridViewItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-                    </Style>
-                </GridView.ItemContainerStyle>
-                <Rectangle Fill="Red"/>
-                <Rectangle Fill="Green"/>
-                <Rectangle Fill="Blue"/>
-                <Rectangle Fill="Yellow"/>
-                <Rectangle Fill="Pink"/>
-                <Rectangle Fill="Purple"/>
-            </GridView>
 
-            <TextBlock x:Name="tbStatus" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
-        </Grid>
+        <GridView Grid.Row="1" x:Name="gridView" SizeChanged="OnSizeChanged">
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VariableSizedWrapGrid x:Name="gridItems"
+                                               MaximumRowsOrColumns="{Binding MaximumRowsOrColumns, Mode=TwoWay}"
+                                               Orientation="Horizontal" ItemHeight="400" ItemWidth="{Binding ItemWidth, Mode=OneWay, FallbackValue=200}"/>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Margin" Value="0,0,10,10"/>
+                    <Setter Property="Padding" Value="0"/>
+                </Style>
+            </GridView.ItemContainerStyle>
+            <Rectangle Fill="Red"/>
+            <Rectangle Fill="Green"/>
+            <Rectangle Fill="Blue"/>
+            <Rectangle Fill="Yellow"/>
+            <Rectangle Fill="Pink"/>
+            <Rectangle Fill="Purple"/>
+        </GridView>
+
+        <TextBlock Grid.Row="1" x:Name="tbStatus" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
 
         <CommandBar x:Name="appBar">
             <CommandBar.PrimaryCommands>
