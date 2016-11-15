@@ -56,29 +56,51 @@
         </VisualStateManager.VisualStateGroups>
 
 
-        <GridView Grid.Row="1" x:Name="gridView" SizeChanged="OnSizeChanged">
-            <GridView.ItemsPanel>
+        <local:VariableSizedGridView Grid.Row="1" x:Name="gridView" SizeChanged="OnSizeChanged">
+            <local:VariableSizedGridView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VariableSizedWrapGrid x:Name="gridItems"
-                                               MaximumRowsOrColumns="{Binding MaximumRowsOrColumns, Mode=TwoWay}"
-                                               Orientation="Horizontal" ItemHeight="400" ItemWidth="{Binding ItemWidth, Mode=OneWay, FallbackValue=200}"/>
+                                           MaximumRowsOrColumns="{Binding MaximumRowsOrColumns, Mode=TwoWay}"
+                                           Orientation="Horizontal" ItemHeight="400" ItemWidth="{Binding ItemWidth, Mode=OneWay, FallbackValue=200}"/>
                 </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
-            <GridView.ItemContainerStyle>
+            </local:VariableSizedGridView.ItemsPanel>
+            <local:VariableSizedGridView.ItemContainerStyle>
                 <Style TargetType="GridViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                     <Setter Property="VerticalContentAlignment" Value="Stretch"/>
                     <Setter Property="Margin" Value="0,0,10,10"/>
                     <Setter Property="Padding" Value="0"/>
                 </Style>
-            </GridView.ItemContainerStyle>
-            <Rectangle Fill="Red"/>
-            <Rectangle Fill="Green"/>
-            <Rectangle Fill="Blue"/>
-            <Rectangle Fill="Yellow"/>
-            <Rectangle Fill="Pink"/>
-            <Rectangle Fill="Purple"/>
-        </GridView>
+            </local:VariableSizedGridView.ItemContainerStyle>
+
+            <Grid Background="Red" Tag="Wide">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Rectangle Fill="White" Opacity="0.6" Margin="10,10,5,10"/>
+                <Rectangle Fill="Black" Opacity="0.6" Grid.Column="1" Margin="5,10,10,10"/>
+            </Grid>
+            <Grid Background="Green"/>
+            <Grid Background="Gray"/>
+            <Grid Background="Blue"/>
+            <Grid Background="Yellow"/>
+            <Grid Background="Pink" Tag="Wide">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Rectangle Fill="White" Opacity="0.6" Margin="10,10,5,10"/>
+                <Rectangle Fill="Black" Opacity="0.6" Grid.Column="1" Margin="5,10,10,10"/>
+            </Grid>
+            <Grid Background="Purple"/>
+            <Grid Background="CornflowerBlue"/>
+            <Grid Background="Orange"/>
+            <Grid Background="DarkOliveGreen"/>
+
+        </local:VariableSizedGridView>
 
         <TextBlock Grid.Row="1" x:Name="tbStatus" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
 
