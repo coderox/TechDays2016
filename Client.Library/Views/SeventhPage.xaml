@@ -8,6 +8,11 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
 
@@ -18,7 +23,8 @@
                     <VisualState.Setters>
                         <Setter Target="tbStatus.Text" Value="small"/>
                         <Setter Target="gridLayout.Margin" Value="12,0"/>
-                        <Setter Target="appBar.VerticalAlignment" Value="Bottom"/>
+                        <Setter Target="gridItems.MaximumRowsOrColumns" Value="1"/>
+                        <Setter Target="appBar.(Grid.Row)" Value="2"/>
                     </VisualState.Setters>
                 </VisualState>
 
@@ -28,8 +34,9 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="tbStatus.Text" Value="medium"/>
-                        <Setter Target="gridLayout.Margin" Value="24,0"/>
-                        <Setter Target="appBar.VerticalAlignment" Value="Top"/>
+                        <Setter Target="gridLayout.Margin" Value="24,0,24,0"/>
+                        <Setter Target="gridItems.MaximumRowsOrColumns" Value="2"/>
+                        <Setter Target="appBar.(Grid.Row)" Value="0"/>
                     </VisualState.Setters>
                 </VisualState>
 
@@ -39,18 +46,39 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="tbStatus.Text" Value="large"/>
-                        <Setter Target="gridLayout.Margin" Value="24,0"/>
-                        <Setter Target="appBar.VerticalAlignment" Value="Top"/>
+                        <Setter Target="gridLayout.Margin" Value="24,0,24,0"/>
+                        <Setter Target="gridItems.MaximumRowsOrColumns" Value="3"/>
+                        <Setter Target="appBar.(Grid.Row)" Value="0"/>
                     </VisualState.Setters>
                 </VisualState>
 
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <Grid x:Name="gridLayout" Background="CornflowerBlue">
+        <Grid Grid.Row="1" x:Name="gridLayout" Background="CornflowerBlue" Margin="12,0">
+            <GridView>
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VariableSizedWrapGrid x:Name="gridItems" Orientation="Horizontal" MaximumRowsOrColumns="1" ItemHeight="400" ItemWidth="{Binding ItemWidth, Mode=OneWay, FallbackValue=200}"/>
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+                <GridView.ItemContainerStyle>
+                    <Style TargetType="GridViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </GridView.ItemContainerStyle>
+                <Rectangle Fill="Red"/>
+                <Rectangle Fill="Green"/>
+                <Rectangle Fill="Blue"/>
+                <Rectangle Fill="Yellow"/>
+                <Rectangle Fill="Pink"/>
+                <Rectangle Fill="Purple"/>
+            </GridView>
+
             <TextBlock x:Name="tbStatus" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
         </Grid>
-        
+
         <CommandBar x:Name="appBar">
             <CommandBar.PrimaryCommands>
                 <AppBarButton Icon="Account"/>
