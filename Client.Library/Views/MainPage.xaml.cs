@@ -60,5 +60,11 @@ namespace Client.Views
                     break;
             }
         }
+
+        private void SeventhPage(object sender, RoutedEventArgs e)
+        {
+            // based on recommendations: https://msdn.microsoft.com/windows/uwp/layout/screen-sizes-and-breakpoints-for-responsive-design
+            Frame.Navigate(typeof(SeventhPage));
+        }
     }
 }
