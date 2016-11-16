@@ -8,8 +8,57 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+
+        <DataTemplate x:Key="HamburgerMenuItem"
+                      x:DataType="controls:HamburgerMenuGlyphItem">
+
+            <Grid Width="240" Height="48">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <SymbolIcon Grid.Column="0"
+                            Symbol="{Binding Glyph}"
+                            Margin="12,12,11,12"/>
+
+                <TextBlock Grid.Column="1"
+                           VerticalAlignment="Center"
+                           FontSize="16"
+                           Text="{x:Bind Label}" />
+            </Grid>
+        </DataTemplate>
+        
+    </Page.Resources>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <controls:HamburgerMenu x:Name="Menu">
+        <controls:HamburgerMenu x:Name="Menu" 
+                                ItemTemplate="{StaticResource HamburgerMenuItem}"
+                                OptionsItemTemplate="{StaticResource HamburgerMenuItem}"
+                                PaneBackground="Red"
+                                Foreground="Black">
+            <controls:HamburgerMenu.ItemsSource>
+
+                <controls:HamburgerMenuItemCollection>
+
+                    <controls:HamburgerMenuGlyphItem Glyph="Home" Label="Home" />
+
+                    <controls:HamburgerMenuGlyphItem Glyph="Globe" Label="Globe" />
+
+                </controls:HamburgerMenuItemCollection>
+
+            </controls:HamburgerMenu.ItemsSource>
+
+            <controls:HamburgerMenu.OptionsItemsSource>
+                <controls:HamburgerMenuItemCollection>
+
+                    <controls:HamburgerMenuGlyphItem Glyph="Setting" Label="Settings" />
+
+                </controls:HamburgerMenuItemCollection>
+
+            </controls:HamburgerMenu.OptionsItemsSource>
             
         </controls:HamburgerMenu>
     </Grid>

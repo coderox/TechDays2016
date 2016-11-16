@@ -48,16 +48,36 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <template10:HamburgerMenu x:Name="Menu" IsOpen="True">
+        <template10:HamburgerMenu x:Name="Menu">
             
             <template10:HamburgerMenu.PrimaryButtons>
+            
                 <template10:HamburgerButtonInfo>
-                    <StackPanel Orientation="Horizontal" Height="48" Margin="0,48,0,0">
+                    <StackPanel Orientation="Horizontal" Height="48">
                         <SymbolIcon Symbol="Home" Height="48" Width="48"/>
                         <TextBlock Text="Home" VerticalAlignment="Center"/>
                     </StackPanel>
                 </template10:HamburgerButtonInfo>
+
+                <template10:HamburgerButtonInfo>
+                    <StackPanel Orientation="Horizontal" Height="48">
+                        <SymbolIcon Symbol="Globe" Height="48" Width="48"/>
+                        <TextBlock Text="Globe" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </template10:HamburgerButtonInfo>
+
             </template10:HamburgerMenu.PrimaryButtons>
+
+            <template10:HamburgerMenu.SecondaryButtons>
+                
+                <template10:HamburgerButtonInfo>
+                    <StackPanel Orientation="Horizontal" Height="48">
+                        <SymbolIcon Symbol="Setting" Height="48" Width="48"/>
+                        <TextBlock Text="Settings" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </template10:HamburgerButtonInfo>
+                
+            </template10:HamburgerMenu.SecondaryButtons>
             
         </template10:HamburgerMenu>
     </Grid>

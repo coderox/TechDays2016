@@ -16,7 +16,7 @@
     </Page.Resources>
     
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Click="OnTemplate10">Template10</Button>
+        <Button Click="OnNative">Native</Button>
         <Button Click="OnUWPCommunityToolkit">UWP Community Toolkit</Button>
     </StackPanel>
 </Page>

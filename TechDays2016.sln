@@ -21,9 +21,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Toolkit.Uwp.UI", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Toolkit.Uwp.UI.Animations", "UWPCommunityToolkit\Microsoft.Toolkit.Uwp.UI.Animations\Microsoft.Toolkit.Uwp.UI.Animations.csproj", "{B24A296C-B3EB-4E06-A64E-74AC2D1ACC91}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Client.BootStrapper", "Client.BootStrapper\Client.BootStrapper.shproj", "{18C20DD0-0F04-4F39-A165-047DBFB92BAD}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Client.T10BootStrapper", "Client.T10BootStrapper\Client.T10BootStrapper.shproj", "{431EE1E4-F889-4D93-9122-968552970BC7}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Client.BootStrapper\Client.BootStrapper.projitems*{18c20dd0-0f04-4f39-a165-047dbfb92bad}*SharedItemsImports = 13
+		Client.BootStrapper\Client.BootStrapper.projitems*{2399f8b2-9aa2-4977-a787-9cd287829c39}*SharedItemsImports = 4
 		Client.Library\Client.Library.projitems*{2399f8b2-9aa2-4977-a787-9cd287829c39}*SharedItemsImports = 4
+		Client.T10BootStrapper\Client.T10BootStrapper.projitems*{431ee1e4-f889-4d93-9122-968552970bc7}*SharedItemsImports = 13
 		Client.Library\Client.Library.projitems*{ec2ce947-f69e-41e7-b4b3-c31a49a48a5c}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
