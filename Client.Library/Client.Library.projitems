@@ -18,6 +18,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\SimpleItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\VariableSizedGridView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\FifthPage.xaml.cs">
       <DependentUpon>FifthPage.xaml</DependentUpon>
     </Compile>
