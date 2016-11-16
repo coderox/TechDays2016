@@ -31,14 +31,14 @@
 
                     <StackPanel Grid.Row="1" HorizontalAlignment="Stretch">
                         
-                        <Button Style="{StaticResource HamburgerButton}">
+                        <Button Style="{StaticResource HamburgerButton}" Click="OnHomeClicked">
                             <StackPanel Orientation="Horizontal" Height="48">
                                 <SymbolIcon Symbol="Home" Height="48" Width="48"/>
                                 <TextBlock Text="Home" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button>
                         
-                        <Button Style="{StaticResource HamburgerButton}">
+                        <Button Style="{StaticResource HamburgerButton}" Click="OnGlobeClicked">
                             <StackPanel Orientation="Horizontal" Height="48">
                                 <SymbolIcon Symbol="Globe" Height="48" Width="48"/>
                                 <TextBlock Text="Globe" VerticalAlignment="Center"/>
@@ -49,7 +49,7 @@
 
                     <StackPanel Grid.Row="2" HorizontalAlignment="Stretch" BorderBrush="#BB000000" BorderThickness="0,1,0,0">
 
-                        <Button Style="{StaticResource HamburgerButton}">
+                        <Button Style="{StaticResource HamburgerButton}" Click="OnSettingsClicked">
                             <StackPanel Orientation="Horizontal" Height="48">
                                 <SymbolIcon Symbol="Setting" Height="48" Width="48"/>
                                 <TextBlock Text="Settings" VerticalAlignment="Center"/>
@@ -62,7 +62,7 @@
             </SplitView.Pane>
 
             <SplitView.Content>
-                <Grid/>
+                <Frame x:Name="ApplicationFrame" SourcePageType="local:MainPage"/>
             </SplitView.Content>
         </SplitView>
 

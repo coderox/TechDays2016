@@ -52,14 +52,14 @@
             
             <template10:HamburgerMenu.PrimaryButtons>
             
-                <template10:HamburgerButtonInfo>
+                <template10:HamburgerButtonInfo PageType="local:MainPage">
                     <StackPanel Orientation="Horizontal" Height="48">
                         <SymbolIcon Symbol="Home" Height="48" Width="48"/>
                         <TextBlock Text="Home" VerticalAlignment="Center"/>
                     </StackPanel>
                 </template10:HamburgerButtonInfo>
 
-                <template10:HamburgerButtonInfo>
+                <template10:HamburgerButtonInfo PageType="local:SecondPage">
                     <StackPanel Orientation="Horizontal" Height="48">
                         <SymbolIcon Symbol="Globe" Height="48" Width="48"/>
                         <TextBlock Text="Globe" VerticalAlignment="Center"/>
@@ -69,8 +69,8 @@
             </template10:HamburgerMenu.PrimaryButtons>
 
             <template10:HamburgerMenu.SecondaryButtons>
-                
-                <template10:HamburgerButtonInfo>
+
+                <template10:HamburgerButtonInfo PageType="local:SettingsPage">
                     <StackPanel Orientation="Horizontal" Height="48">
                         <SymbolIcon Symbol="Setting" Height="48" Width="48"/>
                         <TextBlock Text="Settings" VerticalAlignment="Center"/>
