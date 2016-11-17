@@ -24,6 +24,10 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Client.BootStrapper", "Client.BootStrapper\Client.BootStrapper.shproj", "{18C20DD0-0F04-4F39-A165-047DBFB92BAD}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Client.T10BootStrapper", "Client.T10BootStrapper\Client.T10BootStrapper.shproj", "{431EE1E4-F889-4D93-9122-968552970BC7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5ABC3299-180F-4B5C-A44C-ADE8C28A2A01}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
