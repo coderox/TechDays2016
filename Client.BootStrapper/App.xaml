@@ -4,5 +4,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Client.UWP"
     RequestedTheme="Light">
+    
+    <Application.Resources>
+        <Color x:Key="NewsRed">#FFD13438</Color>
+        <Color x:Key="NewsHoverRed">#FFD5474B</Color>
+        <Color x:Key="NewsPressedRed">#FFDA5D60</Color>
+        <Color x:Key="GrayHeaderBackground">#FF1F1F1F</Color>
+        <Color x:Key="GrayMenuBackground">#FF2B2B2B</Color>
+        <Color x:Key="GrayMenuHoverBackground">#FF404040</Color>
+        <Color x:Key="GrayMenuPressedBackground">#FF555555</Color>
 
+        <SolidColorBrush x:Key="NewsRedBrush" Color="{StaticResource NewsRed}"/>
+        <SolidColorBrush x:Key="GrayHeaderBackgroundBrush" Color="{StaticResource GrayHeaderBackground}"/>
+        <SolidColorBrush x:Key="GrayMenuBackgroundBrush" Color="{StaticResource GrayMenuBackground}"/>
+        <SolidColorBrush x:Key="GrayMenuHoverBackgroundBrush" Color="{StaticResource GrayMenuHoverBackground}"/>
+        <SolidColorBrush x:Key="GrayMenuPressedBackgroundBrush" Color="{StaticResource GrayMenuPressedBackground}"/>
+    </Application.Resources>
+    
 </Application>

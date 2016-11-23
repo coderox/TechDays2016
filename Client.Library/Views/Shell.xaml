@@ -1,0 +1,156 @@
+﻿<Page
+    x:Class="Client.Views.Shell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Client.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.Resources>
+            <Style TargetType="Button" x:Key="HamburgerButton">
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+        </Grid.Resources>
+
+        <SplitView IsPaneOpen="{Binding IsMenuOpen, Mode=TwoWay}" 
+                   PaneBackground="Transparent"
+                   OpenPaneLength="240" DisplayMode="CompactOverlay">
+            <SplitView.Pane>
+                <Grid Background="{StaticResource GrayMenuBackgroundBrush}" Margin="0,48,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <ListView HorizontalAlignment="Stretch" 
+                              ItemsSource="{Binding MenuItems}"
+                              SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                <Setter Property="Margin" Value="0"/>
+                                <Setter Property="Padding" Value="0"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListViewItem">
+                                            <Grid x:Name="ContentBorder"
+                                                  Background="{TemplateBinding Background}"
+                                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                                  BorderThickness="{TemplateBinding BorderThickness}">
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup x:Name="CommonStates">
+                                                        <VisualState x:Name="Normal">
+                                                            <VisualState.Setters>
+                                                                <Setter Target="Indicator.Visibility" Value="Collapsed" />
+                                                                <Setter Target="ContentBorder.Background" Value="Transparent"/>
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                        <VisualState x:Name="PointerOver">
+                                                            <VisualState.Setters>
+                                                                <Setter Target="Indicator.Visibility" Value="Collapsed" />
+                                                                <Setter Target="ContentBorder.Background" Value="{StaticResource GrayMenuHoverBackgroundBrush}"/>
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Pressed">
+                                                            <VisualState.Setters>
+                                                                <Setter Target="Indicator.Visibility" Value="Collapsed" />
+                                                                <Setter Target="ContentBorder.Background" Value="{StaticResource GrayMenuPressedBackgroundBrush}"/>
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Selected">
+                                                            <VisualState.Setters>
+                                                                <Setter Target="Indicator.Visibility" Value="Visible" />
+                                                                <Setter Target="ContentBorder.Background" Value="Transparent"/>
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                        <VisualState x:Name="PointerOverSelected">
+                                                            <VisualState.Setters>
+                                                                <Setter Target="Indicator.Visibility" Value="Visible" />
+                                                                <Setter Target="ContentBorder.Background" Value="{StaticResource GrayMenuHoverBackgroundBrush}"/>
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                        <VisualState x:Name="PressedSelected">
+                                                            <VisualState.Setters>
+                                                                <Setter Target="Indicator.Visibility" Value="Visible" />
+                                                                <Setter Target="ContentBorder.Background" Value="{StaticResource GrayMenuPressedBackgroundBrush}"/>
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                    <VisualStateGroup x:Name="DisabledStates">
+                                                        <VisualState x:Name="Enabled"/>
+                                                        <VisualState x:Name="Disabled">
+                                                            <VisualState.Setters>
+                                                                <Setter Target="Indicator.Visibility" Value="Collapsed" />
+                                                                <Setter Target="ContentBorder.Background" Value="Transparent"/>
+                                                                <Setter Target="ContentPresenter.Opacity" Value="0.6"/>
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+                                                <ContentPresenter x:Name="ContentPresenter"
+                                                                  ContentTransitions="{TemplateBinding ContentTransitions}"
+                                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                                  Content="{TemplateBinding Content}"
+                                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                                  Margin="{TemplateBinding Padding}"/>
+                                                <Rectangle x:Name="Indicator"
+                                                           IsHitTestVisible="False"
+                                                           Width="6"
+                                                           HorizontalAlignment="Left"
+                                                           VerticalAlignment="Stretch"
+                                                           Fill="{StaticResource NewsRedBrush}"/>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+
+                            </Style>
+                        </ListView.ItemContainerStyle>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Height="48">
+                                    <FontIcon Glyph="{Binding Icon}" Height="48" Width="48" Foreground="White" FontSize="16"/>
+                                    <TextBlock Text="{Binding Label}" VerticalAlignment="Center" Foreground="White"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" BorderBrush="#BB000000" BorderThickness="0,1,0,0">
+
+                        <Button Style="{StaticResource HamburgerButton}">
+                            <StackPanel Orientation="Horizontal" Height="48">
+                                <SymbolIcon Symbol="Setting" Height="48" Width="48"/>
+                                <TextBlock Text="Settings" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                    </StackPanel>
+
+                </Grid>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <Frame x:Name="ApplicationFrame" SourcePageType="local:TodayPage"/>
+            </SplitView.Content>
+        </SplitView>
+
+        <Button x:Name="HamburgerMenuButton" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                Command="{Binding ToggleMenuCommand}"
+                Background="{StaticResource NewsRedBrush}" Height="48" Width="48" Foreground="White">
+            <FontIcon FontSize="20" Glyph="&#xE700;"/>
+        </Button>
+    </Grid>
+</Page>

@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="Client.Views.TodayPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Client.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="{StaticResource GrayHeaderBackgroundBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Today" FontWeight="Bold" FontSize="14" Foreground="White" VerticalAlignment="Center" Margin="24,0,0,0"/>
+
+        </Grid>
+
+        <StackPanel Grid.Row="1" Margin="24">
+
+            <Button Click="InterestsClicked">interests</Button>
+            <Button Click="SourcesClicked">interests</Button>
+
+        </StackPanel>
+        
+    </Grid>
+</Page>
