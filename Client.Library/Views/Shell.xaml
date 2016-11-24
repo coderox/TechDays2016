@@ -10,14 +10,217 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <Grid.Resources>
-            <Style TargetType="Button" x:Key="HamburgerButton">
+
+            <Style TargetType="ToggleButton" x:Key="HamburgerMenuButton">
                 <Setter Property="Margin" Value="0"/>
                 <Setter Property="Padding" Value="0"/>
-                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="Background" Value="{StaticResource NewsRedBrush}" />
                 <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+                <Setter Property="FontWeight" Value="Normal" />
+                <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
+                <Setter Property="UseSystemFocusVisuals" Value="True" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Target="RootGrid.Background" Value="{StaticResource NewsRed}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="PointerOver">
+                                            <VisualState.Setters>
+                                                <Setter Target="RootGrid.Background" Value="{StaticResource NewsHoverRed}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Pressed">
+                                            <VisualState.Setters>
+                                                <Setter Target="RootGrid.Background" Value="{StaticResource NewsPressedRed}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Disabled">
+                                            <VisualState.Setters>
+                                                <Setter Target="RootGrid.Background" Value="{StaticResource NewsRed}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Checked">
+                                            <VisualState.Setters>
+                                                <Setter Target="RootGrid.Background" Value="{StaticResource NewsRed}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <ContentPresenter x:Name="ContentPresenter"
+                                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                                  BorderThickness="{TemplateBinding BorderThickness}"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTransitions="{TemplateBinding ContentTransitions}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  Padding="{TemplateBinding Padding}"
+                                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  AutomationProperties.AccessibilityView="Raw"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
+
+            <Style TargetType="ListViewItem" x:Key="HamburgerMenuListViewItem">
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListViewItem">
+                            <Grid x:Name="ContentBorder"
+                                                  Background="{TemplateBinding Background}"
+                                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                                  BorderThickness="{TemplateBinding BorderThickness}">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Target="Indicator.Visibility" Value="Collapsed" />
+                                                <Setter Target="ContentBorder.Background" Value="Transparent"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="PointerOver">
+                                            <VisualState.Setters>
+                                                <Setter Target="Indicator.Visibility" Value="Collapsed" />
+                                                <Setter Target="ContentBorder.Background" Value="{StaticResource GrayMenuHoverBackgroundBrush}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Pressed">
+                                            <VisualState.Setters>
+                                                <Setter Target="Indicator.Visibility" Value="Collapsed" />
+                                                <Setter Target="ContentBorder.Background" Value="{StaticResource GrayMenuPressedBackgroundBrush}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Target="Indicator.Visibility" Value="Visible" />
+                                                <Setter Target="ContentBorder.Background" Value="Transparent"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="PointerOverSelected">
+                                            <VisualState.Setters>
+                                                <Setter Target="Indicator.Visibility" Value="Visible" />
+                                                <Setter Target="ContentBorder.Background" Value="{StaticResource GrayMenuHoverBackgroundBrush}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="PressedSelected">
+                                            <VisualState.Setters>
+                                                <Setter Target="Indicator.Visibility" Value="Visible" />
+                                                <Setter Target="ContentBorder.Background" Value="{StaticResource GrayMenuPressedBackgroundBrush}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                    <VisualStateGroup x:Name="DisabledStates">
+                                        <VisualState x:Name="Enabled"/>
+                                        <VisualState x:Name="Disabled">
+                                            <VisualState.Setters>
+                                                <Setter Target="Indicator.Visibility" Value="Collapsed" />
+                                                <Setter Target="ContentBorder.Background" Value="Transparent"/>
+                                                <Setter Target="ContentPresenter.Opacity" Value="0.6"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <ContentPresenter x:Name="ContentPresenter"
+                                                                  ContentTransitions="{TemplateBinding ContentTransitions}"
+                                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                                  Content="{TemplateBinding Content}"
+                                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                                  Margin="{TemplateBinding Padding}"/>
+                                <Rectangle x:Name="Indicator"
+                                                           IsHitTestVisible="False"
+                                                           Width="6"
+                                                           HorizontalAlignment="Left"
+                                                           VerticalAlignment="Stretch"
+                                                           Fill="{StaticResource NewsRedBrush}"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+            </Style>
+
+            <DataTemplate x:Key="HamburgerMenuItem">
+                <StackPanel Orientation="Horizontal" Height="48">
+                    <FontIcon Glyph="{Binding Icon}" Height="48" Width="48" Foreground="White" FontSize="16"/>
+                    <TextBlock Text="{Binding Label}" VerticalAlignment="Center" Foreground="White"/>
+                </StackPanel>
+            </DataTemplate>
+
+            <Style TargetType="Button" x:Key="HamburgeMenuCommandButton">
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="Background" Value="{StaticResource GrayMenuBackgroundBrush}" />
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+                <Setter Property="FontWeight" Value="Normal" />
+                <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
+                <Setter Property="UseSystemFocusVisuals" Value="True" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Target="RootGrid.Background" Value="{StaticResource GrayMenuBackgroundBrush}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="PointerOver">
+                                            <VisualState.Setters>
+                                                <Setter Target="RootGrid.Background" Value="{StaticResource GrayMenuHoverBackgroundBrush}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Pressed">
+                                            <VisualState.Setters>
+                                                <Setter Target="RootGrid.Background" Value="{StaticResource GrayMenuPressedBackgroundBrush}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Disabled">
+                                            <VisualState.Setters>
+                                                <Setter Target="RootGrid.Background" Value="{StaticResource GrayMenuBackgroundBrush}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <ContentPresenter x:Name="ContentPresenter"
+                                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                                  BorderThickness="{TemplateBinding BorderThickness}"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTransitions="{TemplateBinding ContentTransitions}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  Padding="{TemplateBinding Padding}"
+                                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  AutomationProperties.AccessibilityView="Raw"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
         </Grid.Resources>
 
         <SplitView IsPaneOpen="{Binding IsMenuOpen, Mode=TwoWay}" 
@@ -30,115 +233,34 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <ListView HorizontalAlignment="Stretch" 
-                              ItemsSource="{Binding MenuItems}"
-                              SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                                <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                                <Setter Property="Margin" Value="0"/>
-                                <Setter Property="Padding" Value="0"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="ListViewItem">
-                                            <Grid x:Name="ContentBorder"
-                                                  Background="{TemplateBinding Background}"
-                                                  BorderBrush="{TemplateBinding BorderBrush}"
-                                                  BorderThickness="{TemplateBinding BorderThickness}">
-                                                <VisualStateManager.VisualStateGroups>
-                                                    <VisualStateGroup x:Name="CommonStates">
-                                                        <VisualState x:Name="Normal">
-                                                            <VisualState.Setters>
-                                                                <Setter Target="Indicator.Visibility" Value="Collapsed" />
-                                                                <Setter Target="ContentBorder.Background" Value="Transparent"/>
-                                                            </VisualState.Setters>
-                                                        </VisualState>
-                                                        <VisualState x:Name="PointerOver">
-                                                            <VisualState.Setters>
-                                                                <Setter Target="Indicator.Visibility" Value="Collapsed" />
-                                                                <Setter Target="ContentBorder.Background" Value="{StaticResource GrayMenuHoverBackgroundBrush}"/>
-                                                            </VisualState.Setters>
-                                                        </VisualState>
-                                                        <VisualState x:Name="Pressed">
-                                                            <VisualState.Setters>
-                                                                <Setter Target="Indicator.Visibility" Value="Collapsed" />
-                                                                <Setter Target="ContentBorder.Background" Value="{StaticResource GrayMenuPressedBackgroundBrush}"/>
-                                                            </VisualState.Setters>
-                                                        </VisualState>
-                                                        <VisualState x:Name="Selected">
-                                                            <VisualState.Setters>
-                                                                <Setter Target="Indicator.Visibility" Value="Visible" />
-                                                                <Setter Target="ContentBorder.Background" Value="Transparent"/>
-                                                            </VisualState.Setters>
-                                                        </VisualState>
-                                                        <VisualState x:Name="PointerOverSelected">
-                                                            <VisualState.Setters>
-                                                                <Setter Target="Indicator.Visibility" Value="Visible" />
-                                                                <Setter Target="ContentBorder.Background" Value="{StaticResource GrayMenuHoverBackgroundBrush}"/>
-                                                            </VisualState.Setters>
-                                                        </VisualState>
-                                                        <VisualState x:Name="PressedSelected">
-                                                            <VisualState.Setters>
-                                                                <Setter Target="Indicator.Visibility" Value="Visible" />
-                                                                <Setter Target="ContentBorder.Background" Value="{StaticResource GrayMenuPressedBackgroundBrush}"/>
-                                                            </VisualState.Setters>
-                                                        </VisualState>
-                                                    </VisualStateGroup>
-                                                    <VisualStateGroup x:Name="DisabledStates">
-                                                        <VisualState x:Name="Enabled"/>
-                                                        <VisualState x:Name="Disabled">
-                                                            <VisualState.Setters>
-                                                                <Setter Target="Indicator.Visibility" Value="Collapsed" />
-                                                                <Setter Target="ContentBorder.Background" Value="Transparent"/>
-                                                                <Setter Target="ContentPresenter.Opacity" Value="0.6"/>
-                                                            </VisualState.Setters>
-                                                        </VisualState>
-                                                    </VisualStateGroup>
-                                                </VisualStateManager.VisualStateGroups>
-                                                <ContentPresenter x:Name="ContentPresenter"
-                                                                  ContentTransitions="{TemplateBinding ContentTransitions}"
-                                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                                  Content="{TemplateBinding Content}"
-                                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                                  Margin="{TemplateBinding Padding}"/>
-                                                <Rectangle x:Name="Indicator"
-                                                           IsHitTestVisible="False"
-                                                           Width="6"
-                                                           HorizontalAlignment="Left"
-                                                           VerticalAlignment="Stretch"
-                                                           Fill="{StaticResource NewsRedBrush}"/>
-                                            </Grid>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
+                    <ListView x:Name="PrimaryMenuItems"
+                              HorizontalAlignment="Stretch" 
+                              ItemsSource="{Binding PrimaryMenuItems}"
+                              SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
+                              ItemContainerStyle="{StaticResource HamburgerMenuListViewItem}"
+                              ItemTemplate="{StaticResource HamburgerMenuItem}"
+                              IsItemClickEnabled="True"
+                              ItemClick="OnItemClick"/>
 
-                            </Style>
-                        </ListView.ItemContainerStyle>
+                    <StackPanel Grid.Row="1" BorderBrush="{StaticResource GrayMenuPressedBackgroundBrush}" BorderThickness="0,1,0,0">
 
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Height="48">
-                                    <FontIcon Glyph="{Binding Icon}" Height="48" Width="48" Foreground="White" FontSize="16"/>
-                                    <TextBlock Text="{Binding Label}" VerticalAlignment="Center" Foreground="White"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-
-                    </ListView>
-
-                    <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" BorderBrush="#BB000000" BorderThickness="0,1,0,0">
-
-                        <Button Style="{StaticResource HamburgerButton}">
+                        <Button Style="{StaticResource HamburgeMenuCommandButton}">
                             <StackPanel Orientation="Horizontal" Height="48">
-                                <SymbolIcon Symbol="Setting" Height="48" Width="48"/>
-                                <TextBlock Text="Settings" VerticalAlignment="Center"/>
+                                <FontIcon Glyph="&#xE1E2;" Height="48" Width="48" Foreground="White" FontSize="16"/>
+                                <TextBlock Text="Sign in" VerticalAlignment="Center" Foreground="White"/>
                             </StackPanel>
                         </Button>
-
+                        
+                        <ListView x:Name="SecondaryMenuItems" 
+                                  HorizontalAlignment="Stretch" 
+                                  ItemsSource="{Binding SecondaryMenuItems}"
+                                  SelectedItem="{Binding SelectedSecondaryMenuItem, Mode=TwoWay}"
+                                  ItemContainerStyle="{StaticResource HamburgerMenuListViewItem}"
+                                  ItemTemplate="{StaticResource HamburgerMenuItem}"
+                                  IsItemClickEnabled="True"
+                                  ItemClick="OnItemClick"/>
+                        
                     </StackPanel>
-
                 </Grid>
             </SplitView.Pane>
 
@@ -147,10 +269,11 @@
             </SplitView.Content>
         </SplitView>
 
-        <Button x:Name="HamburgerMenuButton" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                Command="{Binding ToggleMenuCommand}"
-                Background="{StaticResource NewsRedBrush}" Height="48" Width="48" Foreground="White">
+        <ToggleButton x:Name="HamburgerMenuButton" Style="{StaticResource HamburgerMenuButton}"
+                      HorizontalAlignment="Left" VerticalAlignment="Top" 
+                      IsChecked="{Binding IsMenuOpen, Mode=TwoWay}"
+                      Height="48" Width="48" Foreground="White">
             <FontIcon FontSize="20" Glyph="&#xE700;"/>
-        </Button>
+        </ToggleButton>
     </Grid>
 </Page>

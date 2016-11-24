@@ -15,10 +15,21 @@
         <Color x:Key="GrayMenuPressedBackground">#FF555555</Color>
 
         <SolidColorBrush x:Key="NewsRedBrush" Color="{StaticResource NewsRed}"/>
+        <SolidColorBrush x:Key="NewsHoverRedBrush" Color="{StaticResource NewsHoverRed}"/>
+        <SolidColorBrush x:Key="NewsPressedRedBrush" Color="{StaticResource NewsPressedRed}"/>
         <SolidColorBrush x:Key="GrayHeaderBackgroundBrush" Color="{StaticResource GrayHeaderBackground}"/>
         <SolidColorBrush x:Key="GrayMenuBackgroundBrush" Color="{StaticResource GrayMenuBackground}"/>
         <SolidColorBrush x:Key="GrayMenuHoverBackgroundBrush" Color="{StaticResource GrayMenuHoverBackground}"/>
         <SolidColorBrush x:Key="GrayMenuPressedBackgroundBrush" Color="{StaticResource GrayMenuPressedBackground}"/>
+
+        <Style TargetType="TextBlock" x:Key="NewsPageTitleStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="24,0,0,0"/>
+        </Style>
+        
     </Application.Resources>
     
 </Application>

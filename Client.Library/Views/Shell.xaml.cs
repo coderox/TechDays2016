@@ -8,6 +8,7 @@
 
     public sealed partial class Shell
     {
+        MenuViewModel ViewModel { get { return this.DataContext as MenuViewModel; } }
         public Shell()
         {
             this.InitializeComponent();
@@ -31,9 +32,29 @@
         private void ApplicationFrame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
         {
             // show the shell back only if there is anywhere to go in the default frame
-            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = ApplicationFrame.CanGoBack 
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = ApplicationFrame.CanGoBack
                     ? AppViewBackButtonVisibility.Visible
-                    : AppViewBackButtonVisibility.Collapsed;
+                    : AppViewBackButtonVisibility.Collapsed;            
         }
+
+        private void OnItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        //private void OnItemClick(object sender, ItemClickEventArgs e)
+        //{
+        //    var menuItem = e.ClickedItem as MenuViewModel.MenuItem;
+        //    if (menuItem != null) {
+        //        if (menuItem.PageType != null) {
+        //            ViewModel.SelectedSecondaryMenuItem = menuItem;
+        //        } else {
+        //            if (menuItem.Command != null) {
+        //                menuItem.Command.Execute(null);
+        //            }
+        //            ViewModel.TriggerSelectedMenuItemChanged();
+        //        }
+        //    }
+        //}
     }
 }
