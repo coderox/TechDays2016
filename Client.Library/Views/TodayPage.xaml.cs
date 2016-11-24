@@ -36,5 +36,10 @@ namespace Client.Views
         {
             this.Frame.Navigate(typeof(Views.SourcesPage));
         }
+
+        private void OnEnableSearchClicked(object sender, RoutedEventArgs e)
+        {
+            VisualStateManager.GoToState(this, "SearchBoxVisible", false);
+        }
     }
 }

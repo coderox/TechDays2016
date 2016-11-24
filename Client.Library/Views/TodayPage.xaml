@@ -6,8 +6,320 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="HeaderButton">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Background" Value="{StaticResource GrayHeaderBackgroundBrush}" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
+            <Setter Property="UseSystemFocusVisuals" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Target="RootGrid.Background" Value="{StaticResource GrayHeaderBackgroundBrush}"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <VisualState.Setters>
+                                            <Setter Target="RootGrid.Background" Value="{StaticResource GrayHeaderButtonHoverBackgroundBrush}"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <VisualState.Setters>
+                                            <Setter Target="RootGrid.Background" Value="{StaticResource GrayHeaderButtonPressedBackgroundBrush}"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <VisualState.Setters>
+                                            <Setter Target="RootGrid.Background" Value="{StaticResource GrayHeaderBackgroundBrush}"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter x:Name="ContentPresenter"
+                                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                                  BorderThickness="{TemplateBinding BorderThickness}"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTransitions="{TemplateBinding ContentTransitions}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  Padding="{TemplateBinding Padding}"
+                                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  AutomationProperties.AccessibilityView="Raw"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
+        <Style TargetType="Button" x:Key="SearchButton">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
+            <Setter Property="UseSystemFocusVisuals" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Target="RootGrid.Background" Value="Transparent"/>
+                                            <Setter Target="ContentPresenter.Foreground" Value="White"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <VisualState.Setters>
+                                            <Setter Target="RootGrid.Background" Value="{StaticResource NewsRedBrush}"/>
+                                            <Setter Target="ContentPresenter.Foreground" Value="Black"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <VisualState.Setters>
+                                            <Setter Target="RootGrid.Background" Value="{StaticResource NewsRedBrush}"/>
+                                            <Setter Target="ContentPresenter.Foreground" Value="White"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <VisualState.Setters>
+                                            <Setter Target="RootGrid.Background" Value="{StaticResource GrayHeaderBackgroundBrush}"/>
+                                            <Setter Target="ContentPresenter.Foreground" Value="White"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter x:Name="ContentPresenter"
+                                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                                  BorderThickness="{TemplateBinding BorderThickness}"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTransitions="{TemplateBinding ContentTransitions}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  Padding="{TemplateBinding Padding}"
+                                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  AutomationProperties.AccessibilityView="Raw"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="SearchTextBox">
+            <Setter Property="MinWidth" Value="{ThemeResource TextControlThemeMinWidth}" />
+            <Setter Property="MinHeight" Value="{ThemeResource TextControlThemeMinHeight}" />
+            <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
+            <Setter Property="Background" Value="{StaticResource SearchBoxBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="SelectionHighlightColor" Value="{ThemeResource SystemControlHighlightAccentBrush}" />
+            <Setter Property="BorderThickness" Value="4" />
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
+            <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Auto" />
+            <Setter Property="ScrollViewer.VerticalScrollMode" Value="Auto" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+            <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Disabled"/>
+                                    <VisualState x:Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Target="BackgroundElement.Background" Value="{StaticResource SearchBoxBackgroundBrush}"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver"/>
+                                    <VisualState x:Name="Focused"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="ButtonStates">
+                                    <VisualState x:Name="ButtonVisible">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DeleteButton"
+                                                                           Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="ButtonCollapsed" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Border x:Name="BackgroundElement"
+                                    Grid.Row="1"
+                                    Background="{StaticResource SearchBoxBackgroundBrush}"
+                                    Margin="{TemplateBinding BorderThickness}"
+                                    Grid.ColumnSpan="3"
+                                    Grid.RowSpan="1"/>
+                            <Border x:Name="BorderElement"
+                                    Grid.Row="1"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Grid.ColumnSpan="3"
+                                    Grid.RowSpan="1"/>
+                            <ContentPresenter x:Name="HeaderContentPresenter"
+                                              x:DeferLoadStrategy="Lazy"
+                                              Visibility="Collapsed"
+                                              Grid.Row="0"
+                                              Foreground="White"
+                                              Margin="12,0,0,8"
+                                              Grid.ColumnSpan="3"
+                                              Content="{TemplateBinding Header}"
+                                              ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                              FontWeight="Normal" />
+                            <ScrollViewer x:Name="ContentElement"
+                                          Grid.Row="1"
+                                          HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}"
+                                          HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                          VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}"
+                                          VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                                          IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}"
+                                          IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}"
+                                          IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                          Margin="12,0,0,0"
+                                          VerticalAlignment="Center"
+                                          Foreground="White"
+                                          IsTabStop="False"
+                                          AutomationProperties.AccessibilityView="Raw"
+                                          ZoomMode="Disabled" />
+                            <ContentControl x:Name="PlaceholderTextContentPresenter"
+                                            Grid.Row="1"
+                                            VerticalAlignment="Center"
+                                            Foreground="{StaticResource SearchBoxPlaceholderBrush}"
+                                            Margin="12,0,0,0"
+                                            Padding="{TemplateBinding Padding}"
+                                            IsTabStop="False"
+                                            Grid.ColumnSpan="3"
+                                            Content="{TemplateBinding PlaceholderText}"
+                                            IsHitTestVisible="False"/>
+
+                            <Button x:Name="DeleteButton"
+                                    Grid.Row="1"
+                                    Style="{StaticResource SearchButton}"
+                                    IsTabStop="False"
+                                    Grid.Column="1"
+                                    Visibility="Collapsed"
+                                    Foreground="White"
+                                    Margin="6,6,0,6"
+                                    Width="36"
+                                    VerticalAlignment="Stretch">
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE10A;" />
+                            </Button>
+
+                            <Button x:Name="SearchButton"
+                                    Grid.Row="1"
+                                    Style="{StaticResource SearchButton}"
+                                    IsTabStop="False"
+                                    Margin="0,6,6,6"
+                                    Grid.Column="2"
+                                    Width="36"
+                                    VerticalAlignment="Stretch">
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE721;" />
+                            </Button>
+                            
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Page.Resources>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="SearchBoxStates">
+                <VisualState x:Name="SearchBoxVisible">
+                    <VisualState.Setters>
+                        <Setter Target="EnableSearchButton.Visibility" Value="Collapsed"/>
+                        <Setter Target="SearchBox.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+                
+                <VisualState x:Name="SearchBoxHidden">
+                    <VisualState.Setters>
+                        <Setter Target="EnableSearchButton.Visibility" Value="Visible"/>
+                        <Setter Target="SearchBox.Visibility" Value="Collapsed"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+
+            <VisualStateGroup x:Name="WidthStates">
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ThemeButton.Visibility" Value="Collapsed"/>
+                        <Setter Target="EnableSearchButton.Visibility" Value="Visible"/>
+                        <Setter Target="SearchBox.Visibility" Value="Collapsed"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="Middle">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ThemeButton.Visibility" Value="Visible"/>
+                        <Setter Target="EnableSearchButton.Visibility" Value="Visible"/>
+                        <Setter Target="SearchBox.Visibility" Value="Collapsed"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1024"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ThemeButton.Visibility" Value="Visible"/>
+                        <Setter Target="EnableSearchButton.Visibility" Value="Collapsed"/>
+                        <Setter Target="SearchBox.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="48"/>
             <RowDefinition/>
@@ -15,12 +327,38 @@
 
         <Grid Background="{StaticResource GrayHeaderBackgroundBrush}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            
+            <TextBlock Text="Today" Style="{StaticResource NewsPageTitleStyle}" />
 
-            <TextBlock Text="Today" Style="{StaticResource NewsPageTitleStyle}"/>
+            <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" Margin="12,0,0,0">
+                
+                <Button Width="68" Style="{StaticResource HeaderButton}">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE104;" />
+                </Button>
+                
+                <Button Width="68" Style="{StaticResource HeaderButton}"
+                        x:Name="ThemeButton">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE706;" />
+                </Button>
+                
+                <Button Width="48" Style="{StaticResource HeaderButton}">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE712;" FontSize="16"/>
+                </Button>
+                
+                <Button Width="48" Style="{StaticResource HeaderButton}" 
+                        x:Name="EnableSearchButton"
+                        Click="OnEnableSearchClicked">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE721;" />
+                </Button>
 
+                <TextBox x:Name="SearchBox" Width="250" 
+                         Visibility="Collapsed"
+                         Style="{StaticResource SearchTextBox}" PlaceholderText="Search"/>
+            </StackPanel>
+            
         </Grid>
 
         <StackPanel Grid.Row="1" Margin="24">

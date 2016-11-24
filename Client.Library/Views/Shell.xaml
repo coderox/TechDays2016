@@ -159,7 +159,7 @@
             <DataTemplate x:Key="HamburgerMenuItem">
                 <StackPanel Orientation="Horizontal" Height="48">
                     <FontIcon Glyph="{Binding Icon}" Height="48" Width="48" Foreground="White" FontSize="16"/>
-                    <TextBlock Text="{Binding Label}" VerticalAlignment="Center" Foreground="White"/>
+                    <TextBlock Text="{Binding Label}" VerticalAlignment="Center" Foreground="White" Margin="12,0,0,0"/>
                 </StackPanel>
             </DataTemplate>
 
@@ -244,13 +244,28 @@
 
                     <StackPanel Grid.Row="1" BorderBrush="{StaticResource GrayMenuPressedBackgroundBrush}" BorderThickness="0,1,0,0">
 
-                        <Button Style="{StaticResource HamburgeMenuCommandButton}">
-                            <StackPanel Orientation="Horizontal" Height="48">
-                                <FontIcon Glyph="&#xE1E2;" Height="48" Width="48" Foreground="White" FontSize="16"/>
-                                <TextBlock Text="Sign in" VerticalAlignment="Center" Foreground="White"/>
-                            </StackPanel>
+                        <Button Style="{StaticResource HamburgeMenuCommandButton}" Command="{Binding ToggleSignedInCommand}">
+                            <Grid>
+                                <StackPanel Orientation="Horizontal" Height="48" Visibility="{Binding IsLoggedIn, Converter={StaticResource NegativeBooleanToVisibilityConverter}}">
+                                    <FontIcon Glyph="&#xE1E2;" Height="48" Width="48" Foreground="White" FontSize="16"/>
+                                    <TextBlock Margin="12,0,0,0" Text="Sign in" VerticalAlignment="Center" Foreground="White"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="48" Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <Grid Width="48" Height="48">
+                                        <Ellipse Fill="{StaticResource GrayMenuPressedBackgroundBrush}"
+                                             Width="24" Height="24" Margin="12"/>
+                                        <FontIcon Glyph="&#xE13D;" Height="48" Width="48" Foreground="Black" FontSize="16"/>
+                                    </Grid>
+                                    <Grid>
+                                        <TextBlock Text="johan.lindfors@coderox.se" VerticalAlignment="Top" Foreground="White" FontSize="12"
+                                                   Margin="12,6,0,0"/>
+                                        <TextBlock Text="Sign out" VerticalAlignment="Bottom" Foreground="White"
+                                                   Margin="12,0,0,6"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Grid>
                         </Button>
-                        
+
                         <ListView x:Name="SecondaryMenuItems" 
                                   HorizontalAlignment="Stretch" 
                                   ItemsSource="{Binding SecondaryMenuItems}"
@@ -259,7 +274,7 @@
                                   ItemTemplate="{StaticResource HamburgerMenuItem}"
                                   IsItemClickEnabled="True"
                                   ItemClick="OnItemClick"/>
-                        
+
                     </StackPanel>
                 </Grid>
             </SplitView.Pane>

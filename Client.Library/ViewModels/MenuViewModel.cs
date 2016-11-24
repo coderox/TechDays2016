@@ -31,14 +31,27 @@ namespace Client.ViewModels
             {
                 if (isMenuOpen != value) {
                     isMenuOpen = value;
-                    if (PropertyChanged != null) {
-                        PropertyChanged(this, new PropertyChangedEventArgs("IsMenuOpen"));
-                    }
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsMenuOpen"));
+                }
+            }
+        }
+
+        private bool isLoggedIn = false;
+        public bool IsLoggedIn
+        {
+            get { return isLoggedIn; }
+            set
+            {
+                if (isLoggedIn != value) {
+                    isLoggedIn = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsLoggedIn"));
                 }
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public ICommand ToggleSignedInCommand { get; private set; }
 
         private IList<MenuItem> menuItems;
         public IList<MenuItem> PrimaryMenuItems { get { return menuItems.Where(mi => mi.IsSecondaryCommand == false).ToList(); } }
@@ -108,6 +121,8 @@ namespace Client.ViewModels
             };
 
             SelectedMenuItem = menuItems[0];
+
+            ToggleSignedInCommand = new DelegateCommand(delegate { IsLoggedIn = !IsLoggedIn; });
         }
 
         private void OnFrameNavigated(object sender, NavigationEventArgs e)
