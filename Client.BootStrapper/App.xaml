@@ -16,7 +16,7 @@
         <Color x:Key="GrayMenuPressedBackground">#FF555555</Color>
         <Color x:Key="GrayHeaderButtonHoverBackground">#FF353535</Color>
         <Color x:Key="GrayHeaderButtonPressedBackground">#FF4C4C4C</Color>
-
+        
         <Color x:Key="SearchBoxBackground">#FF363636</Color>
         <Color x:Key="SearchBoxPlaceholderColor">#FFC3C3C3</Color>
         
@@ -35,6 +35,14 @@
         
         <Style TargetType="TextBlock" x:Key="NewsPageTitleStyle">
             <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="24,0,0,0"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="PivotHeaderStyle">
+            <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="VerticalAlignment" Value="Center"/>

@@ -264,8 +264,8 @@
         </Style>
 
     </Page.Resources>
-    
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="{StaticResource GrayHeaderBackgroundBrush}">
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="SearchBoxStates">
@@ -325,29 +325,29 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Background="{StaticResource GrayHeaderBackgroundBrush}">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
-            <TextBlock Text="Today" Style="{StaticResource NewsPageTitleStyle}" />
 
-            <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" Margin="12,0,0,0">
-                
+            <TextBlock Text="Today" Style="{StaticResource NewsPageTitleStyle}" Margin="24,0,12,0"/>
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+
                 <Button Width="68" Style="{StaticResource HeaderButton}">
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE104;" />
                 </Button>
-                
+
                 <Button Width="68" Style="{StaticResource HeaderButton}"
                         x:Name="ThemeButton">
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE706;" />
                 </Button>
-                
+
                 <Button Width="48" Style="{StaticResource HeaderButton}">
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE712;" FontSize="16"/>
                 </Button>
-                
+
                 <Button Width="48" Style="{StaticResource HeaderButton}" 
                         x:Name="EnableSearchButton"
                         Click="OnEnableSearchClicked">
@@ -358,15 +358,136 @@
                          Visibility="Collapsed"
                          Style="{StaticResource SearchTextBox}" PlaceholderText="Search"/>
             </StackPanel>
-            
+
         </Grid>
 
-        <StackPanel Grid.Row="1" Margin="24">
+        <Grid Grid.Row="1">
+            <Grid.Resources>
+                <!-- Default style for Windows.UI.Xaml.Controls.Primitives.PivotHeaderItem -->
+                <Style TargetType="PivotHeaderItem">
+                    <Setter Property="FontSize" Value="14" />
+                    <Setter Property="FontFamily" Value="{ThemeResource PivotHeaderItemFontFamily}" />
+                    <Setter Property="FontWeight" Value="SemiBold" />
+                    <Setter Property="CharacterSpacing" Value="{ThemeResource PivotHeaderItemCharacterSpacing}" />
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="Padding" Value="24,0,0,0" />
+                    <Setter Property="Height" Value="48" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                    <Setter Property="IsTabStop" Value="False" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="PivotHeaderItem">
+                                <Grid x:Name="Grid" Background="{TemplateBinding Background}">
+                                    <Grid.Resources>
+                                        <Style x:Key="BaseContentPresenterStyle" TargetType="ContentPresenter">
+                                            <Setter Property="FontFamily" Value="XamlAutoFontFamily"/>
+                                            <Setter Property="FontWeight" Value="SemiBold"/>
+                                            <Setter Property="FontSize" Value="15"/>
+                                            <Setter Property="TextWrapping" Value="Wrap"/>
+                                            <Setter Property="LineStackingStrategy" Value="MaxHeight"/>
+                                            <Setter Property="TextLineBounds" Value="Full"/>
+                                            <Setter Property="OpticalMarginAlignment" Value="TrimSideBearings"/>
+                                        </Style>
+                                        <Style x:Key="BodyContentPresenterStyle" TargetType="ContentPresenter" BasedOn="{StaticResource BaseContentPresenterStyle}">
+                                            <Setter Property="FontFamily" Value="{ThemeResource PivotHeaderItemFontFamily}" />
+                                            <Setter Property="FontWeight" Value="{ThemeResource PivotHeaderItemThemeFontWeight}"/>
+                                            <Setter Property="FontSize" Value="{ThemeResource PivotHeaderItemFontSize}"/>
+                                        </Style>
+                                    </Grid.Resources>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="SelectionStates">
+                                            <VisualStateGroup.Transitions>
+                                                <VisualTransition From="Unselected" To="UnselectedLocked" GeneratedDuration="0:0:0.33" />
+                                                <VisualTransition From="UnselectedLocked" To="Unselected" GeneratedDuration="0:0:0.33" />
+                                            </VisualStateGroup.Transitions>
+                                            <VisualState x:Name="Disabled"/>
+                                            <VisualState x:Name="Unselected">
+                                                <VisualState.Setters>
+                                                    <Setter Target="ContentPresenter.Opacity" Value="0.6"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="UnselectedLocked"/>
+                                            <VisualState x:Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Target="ContentPresenter.Opacity" Value="1"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="UnselectedPointerOver">
+                                                <VisualState.Setters>
+                                                    <Setter Target="ContentPresenter.Opacity" Value="1"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="SelectedPointerOver">
+                                                <VisualState.Setters>
+                                                    <Setter Target="ContentPresenter.Opacity" Value="0.8"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="UnselectedPressed">
+                                                <VisualState.Setters>
+                                                    <Setter Target="ContentPresenter.Opacity" Value="1"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="SelectedPressed">
+                                                <VisualState.Setters>
+                                                    <Setter Target="ContentPresenter.Opacity" Value="0.8"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                    <ContentPresenter x:Name="ContentPresenter"
+                                                      Content="{TemplateBinding Content}"
+                                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                      Margin="{TemplateBinding Padding}"
+                                                      FontSize="{TemplateBinding FontSize}"
+                                                      FontFamily="{TemplateBinding FontFamily}"
+                                                      FontWeight="{TemplateBinding FontWeight}"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                        <ContentPresenter.RenderTransform>
+                                            <TranslateTransform x:Name="ContentPresenterTranslateTransform" />
+                                        </ContentPresenter.RenderTransform>
+                                    </ContentPresenter>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
 
-            <Button Click="InterestsClicked">interests</Button>
-            <Button Click="SourcesClicked">interests</Button>
+            </Grid.Resources>
+            <Pivot>
+                
+                <!--<Pivot.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Margin="12,0,0,0" Foreground="White" FontWeight="SemiBold" FontSize="14"/>
+                    </DataTemplate>
+                </Pivot.HeaderTemplate>-->
+                
+                <Pivot.ItemContainerStyle>
+                    <Style TargetType="PivotItem">
+                        <Setter Property="Margin" Value="0"/>
+                    </Style>
+                </Pivot.ItemContainerStyle>
 
-        </StackPanel>
+                <PivotItem Header="My News">
+                    <Grid Background="Red"/>
+                </PivotItem>
+
+                <PivotItem Header="My Sources">
+                    <Grid Background="Green"/>
+                </PivotItem>
+
+                <PivotItem Header="Top Stories">
+                    <Grid Background="Blue"/>
+                </PivotItem>
+                
+                <PivotItem Header="US"/>
+                <PivotItem Header="World"/>
+                <PivotItem Header="Crime"/>
+                <PivotItem Header="Technology"/>
+                <PivotItem Header="Election 2016"/>
+            </Pivot>
+        </Grid>
         
     </Grid>
 </Page>
