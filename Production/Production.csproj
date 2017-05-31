@@ -103,6 +103,12 @@
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\SecondPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
   <Import Project="..\Client.Library\Client.Library.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

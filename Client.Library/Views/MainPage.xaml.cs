@@ -26,5 +26,10 @@ namespace Client.Views
         {
             this.InitializeComponent();
         }
+
+        private void OnButtonClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SecondPage));
+        }
     }
 }
