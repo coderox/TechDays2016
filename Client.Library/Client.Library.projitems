@@ -9,9 +9,13 @@
     <Import_RootNamespace>Client</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\NewsItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilities\Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilities\DelegateCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\VariableSizedGridView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MenuViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodayViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\InterestsPage.xaml.cs">
       <DependentUpon>InterestsPage.xaml</DependentUpon>
     </Compile>

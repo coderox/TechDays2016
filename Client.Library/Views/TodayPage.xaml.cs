@@ -1,30 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using Client.ViewModels;
+using System;
+using System.Diagnostics;
+using Windows.Devices.WiFi;
+using Windows.Networking.Connectivity;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Client.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class TodayPage : Page
     {
+        TodayViewModel ViewModel { get { return this.DataContext as TodayViewModel; } }
+
+        ConnectionProfile profile = null;
+
         public TodayPage()
         {
             this.InitializeComponent();
+
+            Loaded += async delegate {
+                var viewModel = new TodayViewModel();
+                if (ActualWidth < 600) {
+                    viewModel.MyNewsMaximumRowsOrColumns = 1;
+                    VisualStateManager.GoToState(this, "small", false);
+                } else if (ActualWidth < 1008) {
+                    viewModel.MyNewsMaximumRowsOrColumns = 2;
+                    VisualStateManager.GoToState(this, "medium", false);
+                } else if (ActualWidth < 1252) {
+                    viewModel.MyNewsMaximumRowsOrColumns = 3;
+                    VisualStateManager.GoToState(this, "large", false);
+                } else {
+                    viewModel.MyNewsMaximumRowsOrColumns = 4;
+                    VisualStateManager.GoToState(this, "xlarge", false);
+                }
+                this.DataContext = viewModel;
+                UpdateItemWidth(gridView.ActualWidth);
+
+
+                //NetworkInformation.NetworkStatusChanged += NetworkInformation_NetworkStatusChanged;
+                //profile = NetworkInformation.GetInternetConnectionProfile();
+
+                //if (profile.IsWlanConnectionProfile) {
+                    await ViewModel.LoadAsync();
+                //}
+            };
+        }
+
+        private void NetworkInformation_NetworkStatusChanged(object sender)
+        {
+            profile = NetworkInformation.GetInternetConnectionProfile();           
         }
 
         private void InterestsClicked(object sender, RoutedEventArgs e)
@@ -40,6 +64,18 @@ namespace Client.Views
         private void OnEnableSearchClicked(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToState(this, "SearchBoxVisible", false);
+        }
+
+        private void OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            UpdateItemWidth(e.NewSize.Width);
+        }
+
+        private void UpdateItemWidth(double width)
+        {
+            if (ViewModel != null) {
+                ViewModel.MyNewsItemWidth = Math.Floor(width / ViewModel.MyNewsMaximumRowsOrColumns);
+            }
         }
     }
 }

@@ -3,6 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Client.Views"
+    xmlns:utilities="using:Client.Utilities"
+    xmlns:models="using:Client.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -285,7 +287,8 @@
             </VisualStateGroup>
 
             <VisualStateGroup x:Name="WidthStates">
-                <VisualState x:Name="Narrow">
+                
+                <VisualState x:Name="small">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0"/>
                     </VisualState.StateTriggers>
@@ -293,10 +296,11 @@
                         <Setter Target="ThemeButton.Visibility" Value="Collapsed"/>
                         <Setter Target="EnableSearchButton.Visibility" Value="Visible"/>
                         <Setter Target="SearchBox.Visibility" Value="Collapsed"/>
+                        <Setter Target="gridItems.MaximumRowsOrColumns" Value="1"/>
                     </VisualState.Setters>
                 </VisualState>
 
-                <VisualState x:Name="Middle">
+                <VisualState x:Name="medium">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="600"/>
                     </VisualState.StateTriggers>
@@ -304,19 +308,34 @@
                         <Setter Target="ThemeButton.Visibility" Value="Visible"/>
                         <Setter Target="EnableSearchButton.Visibility" Value="Visible"/>
                         <Setter Target="SearchBox.Visibility" Value="Collapsed"/>
+                        <Setter Target="gridItems.MaximumRowsOrColumns" Value="2"/>
                     </VisualState.Setters>
                 </VisualState>
 
-                <VisualState x:Name="Wide">
+                <VisualState x:Name="large">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="1024"/>
+                        <AdaptiveTrigger MinWindowWidth="1008"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="ThemeButton.Visibility" Value="Visible"/>
                         <Setter Target="EnableSearchButton.Visibility" Value="Collapsed"/>
                         <Setter Target="SearchBox.Visibility" Value="Visible"/>
+                        <Setter Target="gridItems.MaximumRowsOrColumns" Value="3"/>
                     </VisualState.Setters>
                 </VisualState>
+
+                <VisualState x:Name="xlarge">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1252"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ThemeButton.Visibility" Value="Visible"/>
+                        <Setter Target="EnableSearchButton.Visibility" Value="Collapsed"/>
+                        <Setter Target="SearchBox.Visibility" Value="Visible"/>
+                        <Setter Target="gridItems.MaximumRowsOrColumns" Value="4"/>
+                    </VisualState.Setters>
+                </VisualState>
+
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         
@@ -470,7 +489,39 @@
                 </Pivot.ItemContainerStyle>
 
                 <PivotItem Header="My News">
-                    <Grid Background="Red"/>
+                    <utilities:VariableSizedGridView Grid.Row="1" x:Name="gridView"
+                                                     Margin="12,0,0,0"
+                                                     SizeChanged="OnSizeChanged" 
+                                                     ItemsSource="{Binding MyNews}">
+
+                        <utilities:VariableSizedGridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VariableSizedWrapGrid x:Name="gridItems" 
+                                                       Orientation="Horizontal" 
+                                                       ItemHeight="200" 
+                                                       MaximumRowsOrColumns="{Binding MyNewsMaximumRowsOrColumns, Mode=TwoWay}"
+                                                       ItemWidth="{Binding MyNewsItemWidth, Mode=OneWay, FallbackValue=200}"/>
+                            </ItemsPanelTemplate>
+                        </utilities:VariableSizedGridView.ItemsPanel>
+
+                        <utilities:VariableSizedGridView.ItemContainerStyle>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                                <Setter Property="Margin" Value="0,10,10,0"/>
+                                <Setter Property="Padding" Value="0"/>
+                            </Style>
+                        </utilities:VariableSizedGridView.ItemContainerStyle>
+
+                        <utilities:VariableSizedGridView.ItemTemplate>
+                            <DataTemplate x:DataType="models:NewsItem">
+                                <Grid Background="Red" Padding="10">
+                                    <Rectangle Fill="White" Opacity="0.6"/>
+                                </Grid>
+                            </DataTemplate>
+                        </utilities:VariableSizedGridView.ItemTemplate>
+
+                    </utilities:VariableSizedGridView>
                 </PivotItem>
 
                 <PivotItem Header="My Sources">
