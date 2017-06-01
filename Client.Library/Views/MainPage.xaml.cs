@@ -52,11 +52,11 @@ namespace Client.Views
 
         private async void OnRun(object sender, RoutedEventArgs e)
         {
-            var random = new Random();
+            //var random = new Random();
             for (int i = 0; i < 1000; i++) {
                 await ReloadControls();
                 await Task.Delay(5);
-                if (random.NextDouble() < 0.25) {
+                if (ExperimentsServiceFake.Random.NextDouble() < 0.25) {
                     OnPurchase(null, null);
                 }
             }

@@ -31,7 +31,7 @@ namespace Client.Utilities
 
         private const double RANDOMIZATION_THRESHOLD = 0.1;
 
-        static Random random = new Random();
+        public static Random Random = new Random(DateTime.Now.TimeOfDay.Seconds);
         static Dictionary<string, List<TestOption>> tests { get; set; }
 
         static ExperimentsServiceFake()
@@ -81,9 +81,9 @@ namespace Client.Utilities
             var currentTests = tests[key];
             var numChoices = currentTests.Count;
 
-            if (numChoices > 1 && random.NextDouble() < RANDOMIZATION_THRESHOLD) {
+            if (numChoices > 1 && Random.NextDouble() < RANDOMIZATION_THRESHOLD) {
                 // choose random value
-                int index = random.Next(numChoices);
+                int index = Random.Next(numChoices);
                 return currentTests[index].Value;
             }
 
