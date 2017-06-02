@@ -66,5 +66,10 @@ namespace Client.Views
             // based on recommendations: https://msdn.microsoft.com/windows/uwp/layout/screen-sizes-and-breakpoints-for-responsive-design
             Frame.Navigate(typeof(SeventhPage));
         }
+
+        private void VirtualizationPage(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(VirtualizationPage));
+        }
     }
 }

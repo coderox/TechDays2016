@@ -54,7 +54,7 @@
 
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-
+        
         <utilities:VariableSizedGridView Grid.Row="1" x:Name="gridView" SizeChanged="OnSizeChanged" ItemsSource="{Binding Items}">
             
             <utilities:VariableSizedGridView.ItemsPanel>
@@ -76,9 +76,7 @@
 
             <utilities:VariableSizedGridView.ItemTemplate>
                 <DataTemplate x:DataType="models:SimpleItem">
-                    <Grid Background="{x:Bind Brush}" Padding="10">
-                        <Rectangle Fill="White" Opacity="0.6"/>
-                    </Grid>
+                    <Border BorderBrush="{x:Bind Brush}" BorderThickness="10"/>
                 </DataTemplate>
             </utilities:VariableSizedGridView.ItemTemplate>
             

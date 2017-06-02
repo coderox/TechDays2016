@@ -22,6 +22,7 @@
         <Button Click="FifthPage" Content="device family triggers"/>
         <Button Click="SixthPage" Content="code and ux"/>
         <Button Click="SeventhPage" Content="recommendations"/>
+        <Button Click="VirtualizationPage" Content="virtualizations"/>
 
     </StackPanel>
 
