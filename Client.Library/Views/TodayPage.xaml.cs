@@ -34,7 +34,7 @@ namespace Client.Views
                     VisualStateManager.GoToState(this, "xlarge", false);
                 }
                 this.DataContext = viewModel;
-                UpdateItemWidth(gridView.ActualWidth);
+                UpdateItemWidth(gridView.ActualWidth-24);
 
 
                 //NetworkInformation.NetworkStatusChanged += NetworkInformation_NetworkStatusChanged;
@@ -68,7 +68,7 @@ namespace Client.Views
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            UpdateItemWidth(e.NewSize.Width);
+            UpdateItemWidth(e.NewSize.Width-24);
         }
 
         private void UpdateItemWidth(double width)

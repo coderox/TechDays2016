@@ -297,6 +297,7 @@
                         <Setter Target="EnableSearchButton.Visibility" Value="Visible"/>
                         <Setter Target="SearchBox.Visibility" Value="Collapsed"/>
                         <Setter Target="gridItems.MaximumRowsOrColumns" Value="1"/>
+                        <Setter Target="headerSecondColumn.Width" Value="0"/>
                     </VisualState.Setters>
                 </VisualState>
 
@@ -321,6 +322,7 @@
                         <Setter Target="EnableSearchButton.Visibility" Value="Collapsed"/>
                         <Setter Target="SearchBox.Visibility" Value="Visible"/>
                         <Setter Target="gridItems.MaximumRowsOrColumns" Value="3"/>
+                        <Setter Target="headerFirstColumn.Width" Value="2*"/>
                     </VisualState.Setters>
                 </VisualState>
 
@@ -490,15 +492,31 @@
 
                 <PivotItem Header="My News">
                     <utilities:VariableSizedGridView Grid.Row="1" x:Name="gridView"
-                                                     Margin="12,0,0,0"
+                                                     Margin="0,0,0,0"
                                                      SizeChanged="OnSizeChanged" 
                                                      ItemsSource="{Binding MyNews}">
 
+                        <utilities:VariableSizedGridView.Header>
+                            <Grid Height="380">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition x:Name="headerFirstColumn"/>
+                                    <ColumnDefinition x:Name="headerSecondColumn"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                        Grid.Column="0" Background="Green"/>
+                                <Button VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                        Grid.Column="1" Background="Yellow"/>
+
+                            </Grid>
+                        </utilities:VariableSizedGridView.Header>
+                        
                         <utilities:VariableSizedGridView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VariableSizedWrapGrid x:Name="gridItems" 
                                                        Orientation="Horizontal" 
                                                        ItemHeight="200" 
+                                                       Margin="12"
                                                        MaximumRowsOrColumns="{Binding MyNewsMaximumRowsOrColumns, Mode=TwoWay}"
                                                        ItemWidth="{Binding MyNewsItemWidth, Mode=OneWay, FallbackValue=200}"/>
                             </ItemsPanelTemplate>
@@ -508,15 +526,16 @@
                             <Style TargetType="GridViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                                 <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-                                <Setter Property="Margin" Value="0,10,10,0"/>
+                                <Setter Property="Margin" Value="12"/>
                                 <Setter Property="Padding" Value="0"/>
                             </Style>
                         </utilities:VariableSizedGridView.ItemContainerStyle>
 
                         <utilities:VariableSizedGridView.ItemTemplate>
                             <DataTemplate x:DataType="models:NewsItem">
-                                <Grid Background="Red" Padding="10">
-                                    <Rectangle Fill="White" Opacity="0.6"/>
+                                <Grid Background="Red">
+                                    <Rectangle Fill="White" Opacity="0.6" VerticalAlignment="Bottom"
+                                               Height="{Binding LabelHeight}"/>
                                 </Grid>
                             </DataTemplate>
                         </utilities:VariableSizedGridView.ItemTemplate>
