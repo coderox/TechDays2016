@@ -17,23 +17,23 @@ namespace Client.Views
         public TodayPage()
         {
             this.InitializeComponent();
+            
+            this.DataContext = new TodayViewModel();
 
             Loaded += async delegate {
-                var viewModel = new TodayViewModel();
                 if (ActualWidth < 600) {
-                    viewModel.MyNewsMaximumRowsOrColumns = 1;
+                    ViewModel.MyNewsMaximumRowsOrColumns = 1;
                     VisualStateManager.GoToState(this, "small", false);
                 } else if (ActualWidth < 1008) {
-                    viewModel.MyNewsMaximumRowsOrColumns = 2;
+                    ViewModel.MyNewsMaximumRowsOrColumns = 2;
                     VisualStateManager.GoToState(this, "medium", false);
                 } else if (ActualWidth < 1252) {
-                    viewModel.MyNewsMaximumRowsOrColumns = 3;
+                    ViewModel.MyNewsMaximumRowsOrColumns = 3;
                     VisualStateManager.GoToState(this, "large", false);
                 } else {
-                    viewModel.MyNewsMaximumRowsOrColumns = 4;
+                    ViewModel.MyNewsMaximumRowsOrColumns = 4;
                     VisualStateManager.GoToState(this, "xlarge", false);
                 }
-                this.DataContext = viewModel;
                 UpdateItemWidth(gridView.ActualWidth-24);
 
 
