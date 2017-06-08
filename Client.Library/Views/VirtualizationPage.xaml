@@ -20,8 +20,12 @@
                         <Border BorderBrush="{x:Bind Brush}" BorderThickness="10"/>
                         <StackPanel Margin="15">
                             <TextBlock Text="{x:Bind FirstLine}"/>
+                            <!--
                             <TextBlock Text="{x:Bind SecondLine}" x:Phase="1"/>
                             <TextBlock Text="{x:Bind ThirdLine}" x:Phase="2"/>
+                            -->
+                            <TextBlock Text="{x:Bind SecondLine}"/>
+                            <TextBlock Text="{x:Bind ThirdLine}"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
