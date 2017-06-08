@@ -13,9 +13,9 @@ namespace Client.Views
 
         }
 
-        partial void EvenMoreWorkDoneHere(int par)
+        partial void EvenMoreWorkDoneHere(ref int par)
         {
-
+            par *= 2;
         }
     }
 }

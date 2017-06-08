@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using Windows.UI.Xaml.Controls;
 
@@ -7,11 +8,13 @@ namespace Client.Views
 {
     public sealed partial class SecondPage : Page
     {
-        partial void EvenMoreWorkDoneHere(int par);
+        partial void EvenMoreWorkDoneHere(ref int par);
 
         public SecondPage()
         {
             this.InitializeComponent();
+
+            DoWork();
         }
 
         void DoWork()
@@ -24,8 +27,9 @@ namespace Client.Views
 #else
             // Do work in production configuration
 #endif
-
-            EvenMoreWorkDoneHere(42);
+            int theAnswer = 42;
+            EvenMoreWorkDoneHere(ref theAnswer);
+            Debug.WriteLine(theAnswer);
         }
     }
 }
