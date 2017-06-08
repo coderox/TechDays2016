@@ -7,21 +7,25 @@ namespace Client.Views
 {
     public sealed partial class SecondPage : Page
     {
+        partial void EvenMoreWorkDoneHere(int par);
+
         public SecondPage()
         {
             this.InitializeComponent();
         }
 
-        private void DoWork()
+        void DoWork()
         {
 #if DEVELOP
             // Do work in development configuration
-            EvenMoreWorkDoneHere();
+            MoreWorkDoneHere();
 #elif TEST
             // Do work in test configuration                
 #else
             // Do work in production configuration
 #endif
+
+            EvenMoreWorkDoneHere(42);
         }
     }
 }

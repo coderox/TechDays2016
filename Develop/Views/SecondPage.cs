@@ -8,7 +8,12 @@ namespace Client.Views
 {
     partial class SecondPage
     {
-        private void EvenMoreWorkDoneHere()
+        void MoreWorkDoneHere()
+        {
+
+        }
+
+        partial void EvenMoreWorkDoneHere(int par)
         {
 
         }
