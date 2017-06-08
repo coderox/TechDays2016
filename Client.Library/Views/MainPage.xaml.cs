@@ -30,7 +30,6 @@ namespace Client.Views
 
             Loaded += async delegate {
                 await ExperimentsServiceFake.Initialize();
-                await experiments.Initialize();
                 await ReloadControls();
             };
         }
